@@ -45,7 +45,7 @@ Originally I tried to find three clusters, however, one of the clusters was very
 
 <img src="cluster_means.png" alt="cluster means" width="500"/>
 
-<sup><sup>3</sup> _Normal curves used since we preformed the clustering on means, and the CLT tells us that for large sample sizes, the expected value of the mean follows an approxiemently normal distribution centered at the E(xbar), which is the cluster mean_</sup>
+<sup><sup>4</sup> _Normal curves used since we preformed the clustering on means, and the CLT tells us that for large sample sizes, the expected value of the mean follows an approxiemently normal distribution centered at the E(xbar), which is the cluster mean_</sup>
 
 ## Creating Data Frame
 
@@ -83,5 +83,27 @@ However, after running the model, I noticed that it was always predicting 'equal
 
 <img src="confusion_matrix_equal_most.png" alt="cluster means" width="700"/>
 
-<sup>_Regardless of the true trial condition, my model is most likely to predict 'equal'_</sup>
+_Regardless of the true trial condition, my model is most likely to predict 'equal'_
+
+I investigated the data and realized this was likely due to the fact that the 'equal' class was greatly over represented in my dataframe. This is because I was only selecting the conditions for hich the mouse anwsered correctly, and based on the experimental design, any anwser for equal was marked as correct. Thus there were more 'equal' values than 'left' or 'right'
+
+```
+Number of rows where 'right' equals 1: 518
+Number of rows where 'left' equals 1: 547
+Number of rows where 'equal' equals 1: 757
+```
+
+In order to remedy this, I made the difficult decision to remove some of the 'equal' rows in order to make it even with the other 2 classes. I also scaled the data using min_max scaling with the hopes that may help performance <sup>5</sup> . To deal with the loss of data from removing rows, I used kFolds validation to train my data to ensure that I was still using all the data in my training across all the folds. 
+
+<sup><sup>5</sup> Standardization was done on the whole dataset rather than the training, testing, and validation sets seperately due to the challenges of standardizing seperately for every iteration within the k folds loop</sup> 
+
+Within the folds, I used 5% of the data for validation and 5% for testing. I used the validation data when training in order to implement early stopping to prevent overfitting (model stops early when validation accuracy stops improving alongside training accuracy) and model checkpoints (only updates the weights when the validation accuracy improves)
+Note: validation data and test data is seperate. No testing data was seen during training.
+
+At the end of each fold, I evaluated the model on the test data for that fold and printed a confusion matrix like the following example:
+
+
+The average testing accuracy across the kFolds was 55% (note that they are selecting among 3 possibilities, so random chance would result expected accuracy of 33%, thus the model preforms 22% better than random chance) 
+The highest kFold testing accuracy was 60%, or nearly 30% better than random chance. One thing I noticed was that most of the matrices show that the model determines 'equal' with higher accuracy than 'left' or 'right'. I think this corresponds with the higher correlations between the predictors and the 'equal' column than the other y columns as we saw in the correlation matrix
+
 
