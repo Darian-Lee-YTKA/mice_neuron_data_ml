@@ -20,11 +20,11 @@ I thought these noisy neurons observed in the previous step may hint at certain 
 
 To perform the test, I extracted all the neurons corresponding to each brain area and split them up by their trial condition. Because my project aims to determine what the mice is most likely to be preciving, trials where the mouse anwsered incorrectly could skew my results since isn't clear what the mouse was percieving it as. Thus I only used the conditions 'left true', 'right true' and 'equal true'. To account for differences in when the neurons activate, I decided to store the means of each neuron's data in the first half of the .4 seconds and the mean of each neuron's data for the second half of the .4 seconds in a seperate lists. Once I had lists for all brain areas and trial conditions, I performed pairwise welches t-tests<sup>2</sup> to determine the brain areas who's mean was significantly different across trial conditions at alpha = .01<sup>3</sup>. I then plotted the data and took the union of all the brain areas that were significant at alpha = .01 for at least one comparison:
 
-<img src="example_t_test.png" alt="Averages Graph" width="900"/>
+<img src="example_t_test.png" alt="example t-test output" width="900"/>
 
 <small>_in this figure LR represents the comparision between the 'left true' and 'right true' experimental conditions, ER denotes 'equal true' compared to 'right true', etc._</small>
 
-<img src="ttest_plotted.png" alt="Averages Graph" width="900"/>
+<img src="ttest_plotted.png" alt="plotted t-test" width="900"/>
 
 _This graph shows the results of the significance testing for the condition 'right true' versus 'left true' for the latter .2 seconds of the neural recording. The bars represent the brain areas and their t-score associated with how much the means of the activation rate for their associated neurons differ between the two experimental conditions. The read line denotes alpha = .05 and the blue line denotes alpha = .01. I decided to use alpha = .01_
 
@@ -41,7 +41,7 @@ My original plan was to use these brain areas as the features for which to bridg
 In order to ensure my clusters were not dominated by the trial situations, I created another custom class with the attribute left_right_equal to represent a 120 (3x40) element list containing the element wise averages across time for all the instances of that neuron in the trial situation 'left true' (first 40 elements), followed by the element wise averages across time for all the instances of that neuron in the trial situation 'right true' (second 40 elements), followed by the element wise averages across time for all the instances of that neuron in the trial situation 'equal true' (first last 40 elements)
 Originally I tried to find three clusters, however, one of the clusters was very small, so I limited my analysis to only 2. Although the TSNE visual plot does not show much differentiation between clusters, plotting the cluster means and standard deviations as normal curves shows noticable differences<sup>4</sup>
 
-<img src="cluster_means.png.png" alt="Averages Graph" width="500"/>
+<img src="cluster_means.png" alt="cluster means" width="500"/>
 
 <sup><sup>3</sup> _Normal curves used since we preformed the clustering on means, and the CLT tells us that for large sample sizes, the expected value of the mean follows an approxiemently normal distribution centered at the E(xbar), which is the cluster mean_</sup>
 
