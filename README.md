@@ -140,35 +140,6 @@ Perhaps I could have predicted eventual feedback better if I had worked directly
 Once the test data was posted, I reran my entire project with the test data included to ensure it was properly preprocessed and clustered. Then I used each of my final models from k-folds to predict the test data. I compared my predicted class memberships (ie the predicted trial conditions based on the neural data) with the true class memberships (the real trial conditions) and for each correct row in which the two corresponded, I predicted a feedback type of 1, and for each row that they did not correspond, I predicted a feedback of 0 (indicated as -1 in the original data). Then I took the sum of the true feedback list (which contains 1s and 0s) and my predictions to find the percentage that I was predicting correctly. **The average accuracy across models was 73% with a very small standard deviation of 0.009**
 
 ```
-final_accs = []
-for model in range(len(best_models)): # iterate through 5 to make sure we use all train data
-
-  my_modelFULL = best_models[model]
-  y_pred__prob = my_modelFULL.predict(X_test, verbose = 0)
-  y_true_matrix = np.matrix(y_test)
-  y_true = np.argmax(np.asarray(y_true_matrix), axis=1)
-  y_pred_list = np.argmax(y_pred__prob, axis = 1)
-  pred_feedbacks = []
-  for i in range(len(y_pred_list)):
-    if y_true[i] == 2: # this means the trial conditions were equal, so either anwser is correct
-      pred_feedbacks.append(1)
-    elif y_pred_list[i] != y_true[i]:
-      pred_feedbacks.append(0)
-    else: 
-      pred_feedbacks.append(1)
-    true_list = y_compare['feedback'].tolist()
-
-  accuracy = (sum(pred_feedbacks))/sum(true_list) # in case there are 0
-  print('accuracy for this model (each model trained on different training and valiadation fold) ', accuracy) # number of predicted successes
-
-  final_accs.append(accuracy)
-
-import statistics
-
-
-print('average final accuracy: ', np.mean(final_accs), 'sd: ', statistics.stdev(final_accs), 'max: ', max(final_accs))
-```
-```
 accuracy for this model (each model trained on different training and valiadation fold)  0.7379310344827587
 accuracy for this model (each model trained on different training and valiadation fold)  0.7379310344827587
 accuracy for this model (each model trained on different training and valiadation fold)  0.7379310344827587
