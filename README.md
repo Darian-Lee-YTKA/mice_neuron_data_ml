@@ -137,6 +137,41 @@ Perhaps I could have predicted eventual feedback better if I had worked directly
 
 # Prediction performance on the test sets
 
-Once the test data was posted, I reran my entire project with the test data included to ensure it was properly preprocessed and clustered<sup>6</sup>
+Once the test data was posted, I reran my entire project with the test data included to ensure it was properly preprocessed and clustered. Then I used each of my final models from k-folds to predict the test data. I compared my predicted class memberships (ie the predicted trial conditions based on the neural data) with the true class memberships (the real trial conditions) and for each correct row in which the two corresponded, I predicted a feedback type of 1, and for each row that they did not correspond, I predicted a feedback of 0 (indicated as -1 in the original data). Then I took the sum of the true feedback list (which contains 1s and 0s) and my predictions to find the percentage that I was predicting correctly. Unfortunately, my results were quite disappointing, and because the test data was posted so close to the submission deadline, I was unable to make any changes:
 
-<sup><sup>6</sup> If you assign this project in the future PLEASE make the test data released earlier. Having to perform all the testing in one day in addition to having other finals and work was a TERRIBLE experience! Why couldn't it have been realesed over the weekend to give students with more intensive preprocessing steps more time to run their code!? </sup>
+```
+final_accs = []
+for model in range(len(best_models)): # iterate through all 5 models from the kfolds. NOTE: kfolds used validation data and test data which was completely seprate from the given test set
+  my_modelFULL = best_models[model]
+  y_pred__prob = my_modelFULL.predict(X_test, verbose = 0)
+  y_true_matrix = np.matrix(y_test)
+  y_true = np.argmax(np.asarray(y_true_matrix), axis=1)
+  y_pred_list = np.argmax(y_pred__prob, axis = 1)
+  pred_feedbacks = []
+  for i in range(len(y_pred_list)):
+    if y_pred_list[i] != y_true[i]:
+      pred_feedbacks.append(0)
+    else: 
+      pred_feedbacks.append(1)
+    true_list = y_compare['feedback'].tolist()
+
+  accuracy = (sum(pred_feedbacks))/sum(true_list) # in case there are 0
+  print('accuracy for this model (each model trained on different training and valiadation fold) ', accuracy) # number of predicted successes
+
+  final_accs.append(accuracy)
+
+import statistics
+
+
+print('average final accuracy: ', np.mean(final_accs), 'sd: ', statistics.stdev(final_accs), 'max: ', max(final_accs))
+```
+```
+accuracy for this model (each model trained on different training and valiadation fold)  0.5241379310344828
+accuracy for this model (each model trained on different training and valiadation fold)  0.5241379310344828
+accuracy for this model (each model trained on different training and valiadation fold)  0.5241379310344828
+accuracy for this model (each model trained on different training and valiadation fold)  0.5241379310344828
+accuracy for this model (each model trained on different training and valiadation fold)  0.503448275862069
+average final accuracy:  0.52 sd:  0.009252695079309493 max:  0.5241379310344828
+```
+
+As you can see, the model for predicting feedback does not perform much better than random chance. Reasons for why will be discussed in 'discussion'
