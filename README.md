@@ -58,7 +58,7 @@ My original plan was to use these brain areas as the features for which to bridg
 To ensure my clusters were not dominated by the trial situations, I created another custom class with the attribute left_right_equal to represent a 120 (3x40) element list containing the element-wise averages across time for all the instances of that neuron in the trial situation 'left true' (first 40 elements), followed by the element-wise averages across time for all the instances of that neuron in the trial situation 'right true' (second 40 elements), followed by the element-wise averages across time for all the instances of that neuron in the trial situation 'equal true' (first last 40 elements)
 Originally I tried to find three clusters, however, one of the clusters was very small, so I limited my analysis to only 2. Although the TSNE visual plot does not show much differentiation between clusters, plotting the cluster means and standard deviations as normal curves show noticeable differences<sup>4</sup>
 
-<img src="pictures/cluster_means.png" alt="cluster means" width="500"/> <img src="pictures/weird_clusters.png" alt="cluster means" width="350"/> 
+<img src="pictures/cluster_means.png" alt="cluster means" width="450"/> <img src="pictures/weird_clusters.png" alt="cluster means" width="350"/> 
 
 _Note: the weird appearance of the clusters on the right may be the result of compressing a 120-dimensional space into 2 dimensions in tsne._
 
@@ -128,7 +128,7 @@ The highest kFold testing accuracy was 65%, or **32% better than random chance**
 
 One thing I noticed was that most of the matrices show that the model determines 'equal' and 'right' with higher accuracy than 'left'. I think this corresponds with the extremely low correlations between our predictor variables and instances of 'left' that we observed in the correlation matrix. Here is an example from one of the lower preforming folds:
 
-<img src="pictures/leftCircled.png" alt="cluster means" width="500"/> <img src="pictures/sad_corr.png" alt="cluster means" width="500"/> 
+<img src="pictures/leftCircled.png" alt="cluster means" width="450"/> <img src="pictures/sad_corr.png" alt="cluster means" width="450"/> 
 
 _In this figure, the model struggles to predict the class 'left' accurately. This likely corresponds to low correlation between 'left' class and the predictor variables_
 
