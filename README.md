@@ -128,7 +128,7 @@ The highest kFold testing accuracy was 65%, or **32% better than random chance**
 
 One thing I noticed was that most of the matrices show that the model determines 'equal' and 'right' with higher accuracy than 'left'. I think this corresponds with the extremely low correlations between our predictor variables and instances of 'left' that we observed in the correlation matrix
 
-<img src="confusion_matrix_within_kfolds.png.png" alt="cluster means" width="700"/>
+<img src="confusion_matrix_within_kfolds.png.png" alt="cluster means" width="700"/> <img src="sad_corr.png" alt="cluster means" width="500"/> 
 
 **Note: It seems highly unlikely that one could achieve a significantly more accurate model for predicting experimental conditions with this data due to the very low correlation between some of the target classes and their predictor variables. I am confident in all the steps I took in my preprocessing and data integration and have even tried different methods such as forgoing clustering and not excluding brain areas, and all resulted in similarly low correlations and mediocre model performance. Other more ambitious undertakings such as trying to integrate the data based on the brain areas most significant for each class proved futile due to how the brain areas were dispersed unevenly across sessions. 
 Perhaps I could have predicted eventual feedback better if I had worked directly with the feedback data rather than trying to predict what the mouse saw based on neuron activity. This will be discussed more in the 'discussion' section.**
