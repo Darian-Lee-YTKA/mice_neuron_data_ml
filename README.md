@@ -131,3 +131,6 @@ Perhaps I could have predicted eventual feedback better if I had worked directly
 
 # Prediction performance on the test sets
 
+Once the test data was posted, I reran my entire project with the test data included to ensure it was properly preprocessed and clustered<sup>6</sup>
+
+<sup><sup>6</sup> If you assign this project in the future PLEASE make the test data released earlier. Having to perform all the testing in one day in addition to having other finals and work was a TERRIBLE experience! Why couldn't it have been realesed over the weekend to give students with more intensive preprocessing steps more time to run their code!? </sup>
