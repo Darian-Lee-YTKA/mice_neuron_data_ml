@@ -128,7 +128,7 @@ The highest kFold testing accuracy was 65%, or **32% better than random chance**
 
 One thing I noticed was that most of the matrices show that the model determines 'equal' and 'right' with higher accuracy than 'left'. I think this corresponds with the extremely low correlations between our predictor variables and instances of 'left' that we observed in the correlation matrix. Here is an example:
 
-<img src="badLeft.png" alt="cluster means" width="500"/> <img src="sad_corr.png" alt="cluster means" width="500"/> 
+<img src="leftCircled.png" alt="cluster means" width="500"/> <img src="sad_corr.png" alt="cluster means" width="500"/> 
 
 _In this figure, the model struggles to predict the class 'left' accurately. This likely corresponds to low correlation between 'left' class and the predictor variables_
 
