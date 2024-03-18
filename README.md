@@ -49,4 +49,9 @@ Originally I tried to find three clusters, however, one of the clusters was very
 
 Now that I had a way of grouping neurons across sessions, I was able to create a dataframe in pandas.
 
+<img src="dataFrame.png" alt="cluster means" width="500"/>
+
+_cluster0_half1	represents the mean firing rate for the neurons from that trial in cluster 0 for the first half of the .4 second time interval. cluster0_half2, cluster1_half1, and cluster1_half2 have analogous meanings. Rows represent trials. Note: I only included trials where the mouse anwsered correctly due to my goal on trying to understand the relationship between the neurons and what the mouse is percieving_ 
+
+
 
