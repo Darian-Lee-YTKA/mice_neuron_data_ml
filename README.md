@@ -56,4 +56,6 @@ _cluster0_half1	represents the mean firing rate for the neurons from that trial 
 
 Then I plotted the correlation matrix to ensure that my predictors were describing the target values well, and to my dismay I found almost no correlation between my predictors and the column 'left':
 
+<img src="correlation_matrix" alt="cluster means" width="900"/>
 
+I tried to revisit my brain area selection as well as trying without clusters and with different clusters, but no matter how I processed the data, I was never able to improve the correlation between my predictors and 'left'
