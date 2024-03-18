@@ -181,7 +181,7 @@ average final accuracy:  0.7337931034482759 sd:  0.009252695079309493 max:  0.73
 
 # Section 6: Discussion
 
-There are 2 main things that I believe hindered me in this project. The first was my inability to accurately classify trials where the left contrast was higher than the right due to extremely low correlation between the 'left' class and the predictors. This problem, I feel, was likely unavoidable due to the nature of the data itself. I feel it is unlikely one could make a model with significantly higher accuracy for predicting trial condition using the same data due to that limitation. 
+While I am happy with my model's performance, there are 2 main things that I believe hindered me in this project. The first was my inability to accurately classify trials where the left contrast was higher than the right due to extremely low correlation between the 'left' class and the predictors. This problem, I feel, was likely unavoidable due to the nature of the data itself. I feel it is unlikely one could make a model with significantly higher accuracy for predicting trial condition using the same data due to that limitation. 
 
-The second main hinderance in my project was more avoiable; 
+The second thing I could have done different is to incorporate the feedback types into my training in order to see if there was any correlation between the neural data and whether the mouse anwsered correctly or incorrectly. I may address this second question in a future project
 
