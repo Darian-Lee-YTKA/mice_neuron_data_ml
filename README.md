@@ -62,4 +62,23 @@ Then I plotted the correlation matrix to ensure that my predictors were describi
 
 I tried to revisit my brain area selection as well as trying without clusters and with different clusters, but no matter how I processed the data, I was never able to improve the correlation between my predictors and 'left'
 
+## Predictive modeling
+
+As stated earlier, my approach for this project is to try to predict what the mouse percieved based on the neuron data, and then compare what they percieved with what the contrast values were in order to predict feedback type. Thus I trained my model on only the trials were the mouse anwsered correctly in order to ensure that the neuron values correspond to the vales we should expect when the mouse is percieving those contrasts. 
+
+I decided to use a feedforward neural net with the following parameters which I found after parameter tuning in order to predict the probabilities of the one-hot-encoded output:
+
+```
+model = Sequential([
+        Dense(64, activation='relu', input_shape=(X_train.shape[1],)),
+        Dense(4096, activation='relu'),
+        Dense(256, activation='relu'),
+        Dense(256, activation='relu'),
+        Dense(256, activation='relu'),
+        Dense(3, activation='softmax') # three output neurons to account for the 3 categories we are trying to predict 
+    ])
+    model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
+```
+However, after running the model, I noticed that it was always predicting 'equal' more than any other class. 
+
 
