@@ -15,6 +15,6 @@ In this graph, I noticed that there were not many visiable differences between t
 
 I thought these noisy neurons observed in the previous step may hint at certain brain areas that are always active and are not good predictors of the visual stimuli. Because of this, I decided to do a significance test to decide which brain areas to remove. I started by doing some research about the brain areas in order to get a better idea of what areas were likely to be important in order to ensure my finds were matching with domain intuition. For full descriptions, see my code
 
-<img src="first_4_descriptions.png" alt="Averages Graph" width="300"/>
+<img src="first_4_descriptions.png" alt="Averages Graph" width="900"/>
 
 I took the average of each brain 
