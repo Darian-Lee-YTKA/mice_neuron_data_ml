@@ -34,4 +34,4 @@ My findings allowed me to rule out 17 brain areas who were not significant diffe
 <small><sup>3</sup> _alpha = .01 choosen to limit number of features selected to reduce RAM usage and model run time_</small>
 
 
-
+<small>This text will be smaller</small>
