@@ -89,11 +89,11 @@ I decided to use a feedforward neural net with the following parameters which I 
 ```
 model = Sequential([
         Dense(64, activation='relu', input_shape=(X_train.shape[1],)),
-        Dense(4096, activation='relu'),
         Dense(256, activation='relu'),
         Dense(256, activation='relu'),
         Dense(256, activation='relu'),
-        Dense(3, activation='softmax') # three output neurons to account for the 3 categories we are trying to predict 
+        Dense(256, activation='relu'),
+        Dense(3, activation='softmax') # three output neurons to account for the 3 categories we are trying to predict
     ])
     model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
 ```
@@ -106,9 +106,9 @@ _Regardless of the true trial condition, my model is most likely to predict 'equ
 I investigated the data and realized this was likely because the 'equal' class was greatly overrepresented in my data frame. This is because I was only selecting the conditions for which the mouse answered correctly, and based on the experimental design, any answer for equal was marked as correct. Thus there were more 'equal' values than 'left' or 'right'
 
 ```
-Number of rows where 'right' equals 1: 518
-Number of rows where 'left' equals 1: 547
-Number of rows where 'equal' equals 1: 757
+Number of rows where 'right' equals 1: 1217
+Number of rows where 'left' equals 1: 1331
+Number of rows where 'equal' equals 1: 1686
 ```
 
 To remedy this, I made the difficult decision to remove some of the 'equal' rows to make it even with the other 2 classes. I also scaled the data using min_max scaling with the hopes that may help performance <sup>5</sup>. To deal with the loss of data from removing rows, I used kFolds validation to train my data to ensure that I was still using all the data in my training across all the folds. 
@@ -121,8 +121,8 @@ Note: validation data and test data are separate. No testing data was seen durin
 At the end of each fold, I evaluated the model on the test data for that fold and printed a confusion matrix like the following example:
 
 
-The average testing accuracy across the kFolds was 55% (note that they are selecting among 3 possibilities, so random chance would result in expected accuracy of 33%, thus the model performs 22% better than random chance) 
-The highest kFold testing accuracy was 60%, or nearly 30% better than random chance. One thing I noticed was that most of the matrices show that the model determines 'equal' with higher accuracy than 'left' or 'right'. I think this corresponds with the higher correlations between the predictors and the 'equal' column than the other y columns as we saw in the correlation matrix
+The average testing accuracy across the kFolds was 53% (note that they are selecting among 3 possibilities, so random chance would result in expected accuracy of 33%, thus the model performs 20% better than random chance) 
+The highest kFold testing accuracy was 65%, or 32% better than random chance. One thing I noticed was that most of the matrices show that the model determines 'equal' and 'right' with higher accuracy than 'left'. I think this corresponds with the extremely low correlations between our predictor variables and instances of 'left' that we observed in the correlation matrix
 
 <img src="confusion_matrix_within_kfolds.png.png" alt="cluster means" width="700"/>
 
