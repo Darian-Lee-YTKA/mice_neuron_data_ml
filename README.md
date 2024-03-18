@@ -35,3 +35,4 @@ My findings allowed me to rule out 17 brain areas who were not significant diffe
 
 
 <small>This text will be smaller</small>
+This text will be smaller
