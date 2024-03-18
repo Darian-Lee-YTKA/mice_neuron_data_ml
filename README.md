@@ -45,3 +45,8 @@ Originally I tried to find three clusters, however, one of the clusters was very
 
 <sup><sup>3</sup> _Normal curves used since we preformed the clustering on means, and the CLT tells us that for large sample sizes, the expected value of the mean follows an approxiemently normal distribution centered at the E(xbar), which is the cluster mean_</sup>
 
+## Creating Data Frame
+
+Now that I had a way of grouping neurons across sessions, I was able to create a dataframe in pandas.
+
+
