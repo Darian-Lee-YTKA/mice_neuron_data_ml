@@ -43,7 +43,9 @@ My original plan was to use these brain areas as the features for which to bridg
 In order to ensure my clusters were not dominated by the trial situations, I created another custom class with the attribute left_right_equal to represent a 120 (3x40) element list containing the element wise averages across time for all the instances of that neuron in the trial situation 'left true' (first 40 elements), followed by the element wise averages across time for all the instances of that neuron in the trial situation 'right true' (second 40 elements), followed by the element wise averages across time for all the instances of that neuron in the trial situation 'equal true' (first last 40 elements)
 Originally I tried to find three clusters, however, one of the clusters was very small, so I limited my analysis to only 2. Although the TSNE visual plot does not show much differentiation between clusters, plotting the cluster means and standard deviations as normal curves shows noticable differences<sup>4</sup>
 
-<img src="cluster_means.png" alt="cluster means" width="500"/> <img src="weird_clusters.png" alt="cluster means" width="200"/> 
+<img src="cluster_means.png" alt="cluster means" width="500"/> <img src="weird_clusters.png" alt="cluster means" width="350"/> 
+
+_Note: the weird appearance of the clusters on the right may be the result of compressing a 120 dimensional space into 2 dimensions in tsne._
 
 <sup><sup>4</sup> _Normal curves used since we preformed the clustering on means, and the CLT tells us that for large sample sizes, the expected value of the mean follows an approxiemently normal distribution centered at the E(xbar), which is the cluster mean_</sup>
 
