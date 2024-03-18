@@ -126,7 +126,7 @@ The highest kFold testing accuracy was 65%, or **32% better than random chance**
 
 <img src="pictures/test_results.png" alt="cluster means" width="600"/>
 
-One thing I noticed was that most of the matrices show that the model determines 'equal' and 'right' with higher accuracy than 'left'. I think this corresponds with the extremely low correlations between our predictor variables and instances of 'left' that we observed in the correlation matrix. Here is an example:
+One thing I noticed was that most of the matrices show that the model determines 'equal' and 'right' with higher accuracy than 'left'. I think this corresponds with the extremely low correlations between our predictor variables and instances of 'left' that we observed in the correlation matrix. Here is an example from one of the lower preforming folds:
 
 <img src="pictures/leftCircled.png" alt="cluster means" width="500"/> <img src="pictures/sad_corr.png" alt="cluster means" width="500"/> 
 
