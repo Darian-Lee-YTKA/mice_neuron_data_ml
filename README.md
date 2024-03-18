@@ -1,7 +1,7 @@
 # mice_neuron_data_ml
 # Section 2 Exploratory analysis:
 
-<sup><sub>Add your tiny text</sub></sup>
+<sup>Add your tiny text</sup>
 
 ## Graphing average neurons across trial conditions:
 
