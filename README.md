@@ -3,7 +3,7 @@
 # Abstract 
 My model attempts to predict which experimental condition the mouse was perceiving based on the neural data and then compares this prediction with the actual experimental condition to assign a feedback type. The feedback types are then compared to the actual feedback that the mouse received to determine model accuracy. The preliminary model for determining experimental condition (right contrast greater, left contrast greater, or equal contrasts) performs with upwards of 65% testing accuracy<sup>*</sup> (32% higher than random chance). Achieving significantly higher accuracy is likely impossible for this model due to very weak correlation between the data and one of the target classses, which will be discussed in more detail later. The final model for assigning feedback type based on the estimates of the preliminary model performs with 73% average testing accuracy. Possible future improvements will be discussed under 'discussion'. 
 
-<sup><sup>*</sup> Average testing accuracy in kfolds was 56% (23% higher than random chance)</sup>
+<sup><sup>*</sup> Average testing accuracy for preliminary model for determining experimental condition in kfolds was 56% (23% higher than random chance)</sup>
 
 # Section 1: Introduction:
 
