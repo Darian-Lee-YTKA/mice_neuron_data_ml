@@ -178,7 +178,7 @@ As you can see, the model for predicting feedback does not perform much better t
 
 # Section 6: Discussion
 
-There are 2 main things that I believe hindered me in this project. The first was my inability to accurately predict when trials where the left contrast was higher than the right due to extremely low correlation between the 'left' class and the predictors. This problem, I feel, was likely unavoidable due to the nature of the data itself. I feel it is unlikely one could make a model with significantly higher accuracy for predicting trial condition using the same data due to that limitation. 
+There are 2 main things that I believe hindered me in this project. The first was my inability to accurately classify trials where the left contrast was higher than the right due to extremely low correlation between the 'left' class and the predictors. This problem, I feel, was likely unavoidable due to the nature of the data itself. I feel it is unlikely one could make a model with significantly higher accuracy for predicting trial condition using the same data due to that limitation. 
 
 The second main hinderance in my project was more avoiable; 
 
