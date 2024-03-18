@@ -126,7 +126,7 @@ The highest kFold testing accuracy was 65%, or **32% better than random chance**
 
 <img src="test_results.png" alt="cluster means" width="600"/>
 
-One thing I noticed was that most of the matrices show that the model determines 'equal' and 'right' with higher accuracy than 'left'. I think this corresponds with the extremely low correlations between our predictor variables and instances of 'left' that we observed in the correlation matrix
+One thing I noticed was that most of the matrices show that the model determines 'equal' and 'right' with higher accuracy than 'left'. I think this corresponds with the extremely low correlations between our predictor variables and instances of 'left' that we observed in the correlation matrix. Here is an example:
 
 <img src="badLeft.png" alt="cluster means" width="500"/> <img src="sad_corr.png" alt="cluster means" width="500"/> 
 
@@ -175,3 +175,5 @@ average final accuracy:  0.52 sd:  0.009252695079309493 max:  0.5241379310344828
 ```
 
 As you can see, the model for predicting feedback does not perform much better than random chance. Reasons for why will be discussed in 'discussion'
+
+
