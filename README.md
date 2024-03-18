@@ -106,4 +106,5 @@ At the end of each fold, I evaluated the model on the test data for that fold an
 The average testing accuracy across the kFolds was 55% (note that they are selecting among 3 possibilities, so random chance would result expected accuracy of 33%, thus the model preforms 22% better than random chance) 
 The highest kFold testing accuracy was 60%, or nearly 30% better than random chance. One thing I noticed was that most of the matrices show that the model determines 'equal' with higher accuracy than 'left' or 'right'. I think this corresponds with the higher correlations between the predictors and the 'equal' column than the other y columns as we saw in the correlation matrix
 
+<img src="confusion_matrix_within_kfolds.png.png" alt="cluster means" width="700"/>
 
