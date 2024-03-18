@@ -74,7 +74,7 @@ Now that I had a way of grouping neurons across sessions, I was able to create a
 _cluster0_half1	represents the mean firing rate for the neurons from that trial in cluster 0 for the first half of the .4 second time interval. cluster0_half2, cluster1_half1, and cluster1_half2 have analogous meanings. Rows represent trials. Note: I only included trials where the mouse answered correctly due to my goal of trying to understand the relationship between the neurons and what the mouse is perceiving. 'Right' will equal 1 when right contrast  > left contrast, 'Left' will equal 1 when left contrast  > right contrast, otherwise, 'Equal' will be 1_ 
 
 
-Then I plotted the correlation matrix to ensure that my predictors were describing the target values well, and to my dismay I found almost no correlation between my predictors and the column 'left':
+Then I plotted the correlation matrix to ensure that my predictors were describing the target values well, and to my dismay **I found almost no correlation between my predictors and the column 'left'**:
 
 <img src="correlation_matrix" alt="cluster means" width="900"/>
 
