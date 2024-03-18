@@ -10,7 +10,7 @@ After organizing the data in custom classes in python, I started my exploratory 
 
 In this graph, I noticed that there were not many visiable differences between the trial conditions for each session. There also appeared to be some noisy neurons that were always active, such as the two bright lines in the graph above. 
 
-<sup><sup>1</sup> _Because individual neurons measured differ between sessions, these comparisons had to be done separately for each session_</sup>
+<sup><sup>1</sup> _Because individual neurons measured differ between sessions, these comparisons had to be done separately for each session. Conditions were choosen based on which contrast was higher rather than the actual values of each contrast to ensure we had enough data points to preform a robust analysis_</sup>
 
 ## pairwise Welch's t-test to determine significant brain areas 
 
@@ -36,6 +36,8 @@ My findings allowed me to rule out 17 brain areas who were not significant diffe
 
 My original plan was to use these brain areas as the features for which to bridge neurons across sessions, however, I quickly realised that each individual brain area only present in a small subset of the data with little overlap between them; thus this goal proven impractical and I decided to try clustering. 
 
+# Section 3 Data integration
+
 ## Clustering 
 
 In order to ensure my clusters were not dominated by the trial situations, I created another custom class with the attribute left_right_equal to represent a 120 (3x40) element list containing the element wise averages across time for all the instances of that neuron in the trial situation 'left true' (first 40 elements), followed by the element wise averages across time for all the instances of that neuron in the trial situation 'right true' (second 40 elements), followed by the element wise averages across time for all the instances of that neuron in the trial situation 'equal true' (first last 40 elements)
@@ -59,3 +61,5 @@ Then I plotted the correlation matrix to ensure that my predictors were describi
 <img src="correlation_matrix" alt="cluster means" width="900"/>
 
 I tried to revisit my brain area selection as well as trying without clusters and with different clusters, but no matter how I processed the data, I was never able to improve the correlation between my predictors and 'left'
+
+
