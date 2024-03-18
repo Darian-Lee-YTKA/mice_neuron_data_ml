@@ -1,7 +1,6 @@
 # mice_neuron_data_ml
 # Section 2 Exploratory analysis:
 
-<sup>Add your tiny text</sup>
 
 ## Graphing average neurons across trial conditions:
 
@@ -27,14 +26,13 @@ To perform the test, I extracted all the neurons corresponding to each brain are
 
 <img src="ttest_plotted.png" alt="Averages Graph" width="900"/>
 
-<small>_This graph shows the results of the significance testing for the condition 'right true' versus 'left true' for the latter .2 seconds of the neural recording. The graph shows each of the brain areas and their t-score associated with how much the means of the activation rate for their associated neurons differ between the two trial conditions. The read line denotes alpha = .05 and the blue line denotes alpha = .01. I decided to use alpha = .01 to reduce the the number of features being selected since I was ultimately planning to take the union across all 6 pairwise comparisons_</small>
+<sup>_This graph shows the results of the significance testing for the condition 'right true' versus 'left true' for the latter .2 seconds of the neural recording. The graph shows each of the brain areas and their t-score associated with how much the means of the activation rate for their associated neurons differ between the two trial conditions. The read line denotes alpha = .05 and the blue line denotes alpha = .01. I decided to use alpha = .01 to reduce the the number of features being selected since I was ultimately planning to take the union across all 6 pairwise comparisons_</sup>
 
 My findings allowed me to rule out 17 brain areas who were not significant differentiating any of the trial conditions. The remaining brain areas were: CP, MOp, SUB, VISl, GPe, LP, LS, CA1, ACB, LSc, AUD, MEA, VISa, VPL, SSs, MG, VISam, DG, MS, LD, ZI, RN, PL, MB, VISpm, VISrl, ACA, TT, CA3, root, VPM, NB, TH, LGd, MOs, POST, VISp, MRN, LSr, ILA, PT, MD, PO, RT, and ORB. Many of these are consistant with my initial research on brain area function and which are likely to be used in learning and visual perception. 
 
-<small><sup>2</sup> _welches t-tests choosen to reflect the differing sample sizes. Student t-test assumes equal variance, which is not a safe assumption when the sample sizes greatly differ. Welch's test does not assume equal variances_</small>
+<sup><sup>2</sup> _welches t-tests choosen to reflect the differing sample sizes. Student t-test assumes equal variance, which is not a safe assumption when the sample sizes greatly differ. Welch's test does not assume equal variances_</sup>
 
-<small><sup>3</sup> _alpha = .01 choosen to limit number of features selected to reduce RAM usage and model run time_</small>
+<sup><sup>3</sup> _alpha = .01 choosen to limit number of features selected to reduce RAM usage and model run time_</sup>
 
 
-<small>This text will be smaller</small>
-This text will be smaller
+
