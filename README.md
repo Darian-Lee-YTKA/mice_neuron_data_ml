@@ -1,4 +1,10 @@
 # mice_neuron_data_ml
+
+# Introduction:
+
+The ultimate goal of this project is to use neural data recorded at the time at which a mouse is shown visual stimuli in order to predict if they later anwsered a question about the stimuli (whether or not the contrast was higher on the left or right side) correctly. Because we only have brain data for the time at which the mouse was percieving the stimuli rather than anwsering or recieving feedback, my approach to this problem was to try to build a model that looks at the neuron data and tried to predict what the mouse is percieving (whether it is seeing the left contrast as greater than the right, or right greater than the left, or equal). I plan to train my model only on instances where the mouse anwsered correctly in order to ensure that the experimental conditions are consistant with what the mouse was percieving. Once my model is good at using the neural data to predict what the mouse saw, I will feed the test set into it and compare my models output for what the mouse percieved to the actual trial condition. If my model output for what the mouse percieved does not match the actual trial conditions, I will predict that the mouse got it wrong. If they do match, I will predict that the mouse got it right. (Note: there are a few possible issues with the underlying assumptions of this approach that will be discussed in the 'discussion' section.) 
+In the following report, I will go over my exploratory analysis and feature extraction, data integration, the training and testing of the helper model for predicting the experimental condition based on the mouse's neuron data, and the results of the final model which uses the output of the helper model in order to determine if the mouse anwsered correctly or incorrectly. 
+
 # Section 2 Exploratory analysis:
 
 
@@ -110,4 +116,6 @@ The average testing accuracy across the kFolds was 55% (note that they are selec
 The highest kFold testing accuracy was 60%, or nearly 30% better than random chance. One thing I noticed was that most of the matrices show that the model determines 'equal' with higher accuracy than 'left' or 'right'. I think this corresponds with the higher correlations between the predictors and the 'equal' column than the other y columns as we saw in the correlation matrix
 
 <img src="confusion_matrix_within_kfolds.png.png" alt="cluster means" width="700"/>
+
+# Prediction performance on the test sets
 
