@@ -121,7 +121,7 @@ Note: validation data and test data are separate. No testing data was seen durin
 At the end of each fold, I evaluated the model on the test data for that fold and printed a confusion matrix like the following example:
 
 
-The average testing accuracy across the kFolds was 56% (**note that they are selecting among 3 possibilities, so random chance would result in expected accuracy of 33%, thus the model performs 22% better than random chance**) 
+The average testing accuracy across the kFolds was 56% (**note that they are selecting among 3 possibilities, so random chance would result in expected accuracy of 33%, thus the model performs 23% better than random chance**) 
 The highest kFold testing accuracy was 65%, or **32% better than random chance**. 
 
 <img src="test_results.png" alt="cluster means" width="600"/>
