@@ -1,9 +1,9 @@
 # mice_neuron_data_ml
 
 # Abstract 
-The preliminary model for determining experimental condition (right contrast greater, right contrast greater, or equal) performs with upwards of 60% testing accuracy<sup>*</sup> (27% higher than random chance). Achieving significantly higher accuracy is likely impossible for this model because one of our three target classes shows almost no correlation with any of the predictor variables in the correlation matrix. 
+The preliminary model for determining experimental condition (right contrast greater, right contrast greater, or equal) performs with upwards of 65% testing accuracy<sup>*</sup> (32% higher than random chance). Achieving significantly higher accuracy is likely impossible for this model because one of our three target classes shows almost no correlation with any of the predictor variables in the correlation matrix. 
 
-<sup><sup>*</sup> Average testing accuracy in kfolds was 55% (22% higher than random chance)</sup>
+<sup><sup>*</sup> Average testing accuracy in kfolds was 56% (23% higher than random chance)</sup>
 
 # Introduction:
 
@@ -121,7 +121,7 @@ Note: validation data and test data are separate. No testing data was seen durin
 At the end of each fold, I evaluated the model on the test data for that fold and printed a confusion matrix like the following example:
 
 
-The average testing accuracy across the kFolds was 55% (note that they are selecting among 3 possibilities, so random chance would result in expected accuracy of 33%, thus the model performs 22% better than random chance) 
+The average testing accuracy across the kFolds was 56% (note that they are selecting among 3 possibilities, so random chance would result in expected accuracy of 33%, thus the model performs 22% better than random chance) 
 The highest kFold testing accuracy was 65%, or 32% better than random chance. One thing I noticed was that most of the matrices show that the model determines 'equal' and 'right' with higher accuracy than 'left'. I think this corresponds with the extremely low correlations between our predictor variables and instances of 'left' that we observed in the correlation matrix
 
 <img src="confusion_matrix_within_kfolds.png.png" alt="cluster means" width="700"/>
