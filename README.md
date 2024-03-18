@@ -5,14 +5,14 @@ The preliminary model for determining experimental condition (right contrast gre
 
 <sup><sup>*</sup> Average testing accuracy in kfolds was 56% (23% higher than random chance)</sup>
 
-# Introduction:
+# Section 1: Introduction:
 
 
 The ultimate goal of this project is to use neural data recorded at the time at which a mouse is shown visual stimuli to predict if they later answered a question about the stimuli (whether or not the contrast was higher on the left or right side) correctly. Because we only have brain data for the time at which the mouse was perceiving the stimuli rather than answering or receiving feedback, my approach to this problem was to try to build a model that looks at the neuron data and tried to predict what the mouse is perceiving (whether it is seeing the left contrast as greater than the right, or right greater than the left, or equal). I plan to train my model only on instances where the mouse answered correctly to ensure that the experimental conditions are consistent with what the mouse was perceiving. Once my model is good at using the neural data to predict what the mouse saw, I will feed the test set into it and compare my model's output for what the mouse perceived to the actual trial condition. If my model output for what the mouse perceived does not match the actual trial conditions, I will predict that the mouse got it wrong. If they do match, I will predict that the mouse got it right. (Note: there are a few possible issues with the underlying assumptions of this approach that will be discussed in the 'discussion' section.) 
 In the following report, I will go over my exploratory analysis and feature extraction, data integration, the training and testing of the helper model for predicting the experimental condition based on the mouse's neuron data, and the results of the final model which uses the output of the helper model to determine if the mouse answered correctly or incorrectly. 
 
 
-# Section 2 Exploratory analysis:
+# Section 2: Exploratory analysis:
 
 
 ## Graphing average neurons across trial conditions:
@@ -51,7 +51,7 @@ My findings allowed me to rule out 9 brain areas that were not significantly dif
 
 My original plan was to use these brain areas as the features for which to bridge neurons across sessions, however, I quickly realized that each individual brain area is only present in a small subset of the data with little overlap between them; thus this goal proved impractical and I decided to try clustering. 
 
-# Section 3 Data integration
+# Section 3: Data integration
 
 ## Clustering 
 
@@ -80,7 +80,7 @@ Then I plotted the correlation matrix to ensure that my predictors were describi
 
 I tried to revisit my brain area selection as well as trying without clusters and with different clusters, but no matter how I processed the data, I was never able to improve the correlation between my predictors and 'left'
 
-## Predictive modeling
+# Section 4: Predictive modeling
 
 As stated earlier, my approach for this project is to try to predict what the mouse perceived based on the neuron data, and then compare what they perceived with what the contrast values were to predict feedback type. Thus I trained my model on only the trials where the mouse answered correctly to ensure that the neuron values correspond to the values we should expect when the mouse is perceiving those contrasts. 
 
@@ -135,7 +135,7 @@ _In this figure, the model struggles to predict the class 'left' accurately. Thi
 **Note: It seems highly unlikely that one could achieve a significantly more accurate model for predicting experimental conditions with this data due to the very low correlation between some of the target classes and their predictor variables. I am confident in all the steps I took in my preprocessing and data integration and have even tried different methods such as forgoing clustering and not excluding brain areas, and all resulted in similarly low correlations and mediocre model performance. Other more ambitious undertakings such as trying to integrate the data based on the brain areas most significant for each class proved futile due to how the brain areas were dispersed unevenly across sessions. 
 Perhaps I could have predicted eventual feedback better if I had worked directly with the feedback data rather than trying to predict what the mouse saw based on neuron activity. This will be discussed more in the 'discussion' section.**
 
-# Prediction performance on the test sets
+# Section 5: Prediction performance on the test sets
 
 Once the test data was posted, I reran my entire project with the test data included to ensure it was properly preprocessed and clustered. Then I used each of my final models from k-folds to predict the test data. I compared my predicted class memberships (ie the predicted trial conditions based on the neural data) with the true class memberships (the real trial conditions) and for each correct row in which the two corresponded, I predicted a feedback type of 1, and for each row that they did not correspond, I predicted a feedback of 0 (indicated as -1 in the original data). Then I took the sum of the true feedback list (which contains 1s and 0s) and my predictions to find the percentage that I was predicting correctly. Unfortunately, my results were quite disappointing, and because the test data was posted so close to the submission deadline, I was unable to make any changes:
 
@@ -176,4 +176,9 @@ average final accuracy:  0.52 sd:  0.009252695079309493 max:  0.5241379310344828
 
 As you can see, the model for predicting feedback does not perform much better than random chance. Reasons for why will be discussed in 'discussion'
 
+# Section 6: Discussion
+
+There are 2 main things that I believe hindered me in this project. The first was my inability to accurately predict when trials where the left contrast was higher than the right due to extremely low correlation between the 'left' class and the predictors. This problem, I feel, was likely unavoidable due to the nature of the data itself. I feel it is unlikely one could make a model with significantly higher accuracy for predicting trial condition using the same data due to that limitation. 
+
+The second main hinderance in my project was more avoiable; 
 
