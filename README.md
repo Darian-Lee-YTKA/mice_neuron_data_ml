@@ -21,7 +21,7 @@ After organizing the data in custom classes in Python, I started my exploratory 
 
 <img src="averages_graph.png" alt="Averages Graph" width="500"/>
 
-In this graph, I noticed that there were not many visible differences between the trial conditions for each session. There also appeared to be some noisy neurons that were always active, such as the two bright lines in the graph above. 
+In these graphs, I noticed that there were not many visible differences between the trial conditions for each session. There also appeared to be some noisy neurons that were always active, such as the two bright lines in the graph above. 
 
 <sup><sup>1</sup> _Because individual neurons measured differ between sessions, these comparisons had to be done separately for each session. Conditions were chosen based on which contrast was higher rather than the actual values of each contrast to ensure we had enough data points to perform a robust analysis_</sup>
 
