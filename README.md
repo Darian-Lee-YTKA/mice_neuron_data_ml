@@ -33,10 +33,6 @@ I thought these noisy neurons observed in the previous step may hint at certain 
 
 After organizing the data in custom classes in Python, I started my exploratory data analysis by plotting the element-wise averages of the neuron matrices for each of the different experimental conditions for each session<sup>1</sup>. I defined the conditions as "left true", "right true", "left false", "right false", and "equal true", where the first part of the name corresponds to whether the left or right contrast was higher, and the second part corresponds to whether the mouse predicted it correctly. There were 5*18 graphs in total to reflect the 5 experimental conditions and the 18 sessions. 
 
-<img src="averages_graph.png" alt="Averages Graph" width="500"/>
-
-In this graph, I noticed that there were not many visible differences between the trial conditions for each session. There also appeared to be some noisy neurons that were always active, such as the two bright lines in the graph above. 
-
 To perform the test, I extracted all the neurons corresponding to each brain area and split them up by their trial condition. Because my project aims to determine what the mice are most likely to be perceiving, trials where the mouse answered incorrectly could skew my results since isn't clear what the mouse was perceiving it as. Thus I only used the conditions 'left true', 'right true', and 'equal true'. To account for differences in when the neurons activate, I decided to store the means of each neuron's data in the first half of the .4 seconds and the mean of each neuron's data for the second half of the .4 seconds in separate lists. Once I had lists for all brain areas and trial conditions, I performed pairwise welches t-tests<sup>2</sup> to determine the brain areas whose mean was significantly different across trial conditions at alpha = .01<sup>3</sup>. I then plotted the data and took the union of all the brain areas that were significant at alpha = .01 for at least one comparison:
 
 <img src="example_t_test.png" alt="example t-test output" width="900"/>
