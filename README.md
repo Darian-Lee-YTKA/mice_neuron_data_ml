@@ -19,7 +19,7 @@ In the following report, I will go over my exploratory analysis and feature extr
 
 After organizing the data in custom classes in Python, I started my exploratory data analysis by plotting the element-wise averages of the neuron matrices for each of the different experimental conditions for each session<sup>1</sup>. I defined the conditions as "left true", "right true", "left false", "right false", and "equal true", where the first part of the name corresponds to whether the left or right contrast was higher, and the second part corresponds to whether the mouse predicted it correctly. There were 5*18 graphs in total to reflect the 5 experimental conditions and the 18 sessions. 
 
-<img src="averages_graph.png" alt="Averages Graph" width="500"/>
+<img src="pictures/averages_graph.png" alt="Averages Graph" width="500"/>
 
 In these graphs, I noticed that there were not many visible differences between the trial conditions for each session. There also appeared to be some noisy neurons that were always active, such as the two bright lines in the graph above. 
 
@@ -29,17 +29,17 @@ In these graphs, I noticed that there were not many visible differences between 
 
 I thought these noisy neurons observed in the previous step may hint at certain brain areas that are always active and are not good predictors of visual stimuli. Because of this, I decided to do a significance test to decide which brain areas to remove. I started by doing some research about the brain areas to get a better idea of what areas were likely to be important to ensure my findings in the significance test matched domain intuition. For full descriptions, see my code.
 
-<img src="first_4_descriptions.png" alt="Averages Graph" width="900"/>
+<img src="pictures/first_4_descriptions.png" alt="Averages Graph" width="900"/>
 
 After organizing the data in custom classes in Python, I started my exploratory data analysis by plotting the element-wise averages of the neuron matrices for each of the different experimental conditions for each session<sup>1</sup>. I defined the conditions as "left true", "right true", "left false", "right false", and "equal true", where the first part of the name corresponds to whether the left or right contrast was higher, and the second part corresponds to whether the mouse predicted it correctly. There were 5*18 graphs in total to reflect the 5 experimental conditions and the 18 sessions. 
 
 To perform the test, I extracted all the neurons corresponding to each brain area and split them up by their trial condition. Because my project aims to determine what the mice are most likely to be perceiving, trials where the mouse answered incorrectly could skew my results since isn't clear what the mouse was perceiving it as. Thus I only used the conditions 'left true', 'right true', and 'equal true'. To account for differences in when the neurons activate, I decided to store the means of each neuron's data in the first half of the .4 seconds and the mean of each neuron's data for the second half of the .4 seconds in separate lists. Once I had lists for all brain areas and trial conditions, I performed pairwise welches t-tests<sup>2</sup> to determine the brain areas whose mean was significantly different across trial conditions at alpha = .01<sup>3</sup>. I then plotted the data and took the union of all the brain areas that were significant at alpha = .01 for at least one comparison:
 
-<img src="example_t_test.png" alt="example t-test output" width="900"/>
+<img src="pictures/example_t_test.png" alt="example t-test output" width="900"/>
 
 <small>_in this figure LR represents the comparison between the 'left true' and 'right true' experimental conditions, ER denotes 'equal true' compared to 'right true', etc._</small>
 
-<img src="ttest_plotted.png" alt="plotted t-test" width="900"/>
+<img src="pictures/ttest_plotted.png" alt="plotted t-test" width="900"/>
 
 _This graph shows the results of the significance testing for the condition 'right true' versus 'left true' for the latter .2 seconds of the neural recording. The bars represent the brain areas and their t-score associated with how much the means of the activation rate for their associated neurons differ between the two experimental conditions. The red line denotes alpha = .05 and the blue line denotes alpha = .01. I decided to use alpha = .01_
 
@@ -58,7 +58,7 @@ My original plan was to use these brain areas as the features for which to bridg
 To ensure my clusters were not dominated by the trial situations, I created another custom class with the attribute left_right_equal to represent a 120 (3x40) element list containing the element-wise averages across time for all the instances of that neuron in the trial situation 'left true' (first 40 elements), followed by the element-wise averages across time for all the instances of that neuron in the trial situation 'right true' (second 40 elements), followed by the element-wise averages across time for all the instances of that neuron in the trial situation 'equal true' (first last 40 elements)
 Originally I tried to find three clusters, however, one of the clusters was very small, so I limited my analysis to only 2. Although the TSNE visual plot does not show much differentiation between clusters, plotting the cluster means and standard deviations as normal curves show noticeable differences<sup>4</sup>
 
-<img src="cluster_means.png" alt="cluster means" width="500"/> <img src="weird_clusters.png" alt="cluster means" width="350"/> 
+<img src="pictures/cluster_means.png" alt="cluster means" width="500"/> <img src="pictures/weird_clusters.png" alt="cluster means" width="350"/> 
 
 _Note: the weird appearance of the clusters on the right may be the result of compressing a 120-dimensional space into 2 dimensions in tsne._
 
@@ -69,14 +69,14 @@ _Note: the weird appearance of the clusters on the right may be the result of co
 Now that I had a way of grouping neurons across sessions, I was able to create a data frame in pandas.
 
 
-<img src="dataFrame.png" alt="cluster means" width="700"/> 
+<img src="pictures/dataFrame.png" alt="cluster means" width="700"/> 
 
 _cluster0_half1	represents the mean firing rate for the neurons from that trial in cluster 0 for the first half of the .4 second time interval. cluster0_half2, cluster1_half1, and cluster1_half2 have analogous meanings. Rows represent trials. Note: I only included trials where the mouse answered correctly due to my goal of trying to understand the relationship between the neurons and what the mouse is perceiving. 'Right' will equal 1 when right contrast  > left contrast, 'Left' will equal 1 when left contrast  > right contrast, otherwise, 'Equal' will be 1_ 
 
 
 Then I plotted the correlation matrix to ensure that my predictors were describing the target values well, and to my dismay **I found almost no correlation between my predictors and the column 'left'**:
 
-<img src="correlation_matrix" alt="cluster means" width="900"/>
+<img src="pictures/correlation_matrix" alt="cluster means" width="900"/>
 
 I tried to revisit my brain area selection as well as trying without clusters and with different clusters, but no matter how I processed the data, I was never able to improve the correlation between my predictors and 'left'
 
@@ -99,7 +99,7 @@ model = Sequential([
 ```
 However, after running the model, I noticed that it was always predicting 'equal' more than any other class. 
 
-<img src="confusion_matrix_equal_most.png" alt="cluster means" width="700"/>
+<img src="pictures/confusion_matrix_equal_most.png" alt="cluster means" width="700"/>
 
 _Regardless of the true trial condition, my model is most likely to predict 'equal'_
 
@@ -124,11 +124,11 @@ At the end of each fold, I evaluated the model on the test data for that fold an
 The average testing accuracy across the kFolds was 56% (**note that they are selecting among 3 possibilities, so random chance would result in expected accuracy of 33%, thus the model performs 23% better than random chance**) 
 The highest kFold testing accuracy was 65%, or **32% better than random chance**. 
 
-<img src="test_results.png" alt="cluster means" width="600"/>
+<img src="pictures/test_results.png" alt="cluster means" width="600"/>
 
 One thing I noticed was that most of the matrices show that the model determines 'equal' and 'right' with higher accuracy than 'left'. I think this corresponds with the extremely low correlations between our predictor variables and instances of 'left' that we observed in the correlation matrix. Here is an example:
 
-<img src="leftCircled.png" alt="cluster means" width="500"/> <img src="sad_corr.png" alt="cluster means" width="500"/> 
+<img src="pictures/leftCircled.png" alt="cluster means" width="500"/> <img src="pictures/sad_corr.png" alt="cluster means" width="500"/> 
 
 _In this figure, the model struggles to predict the class 'left' accurately. This likely corresponds to low correlation between 'left' class and the predictor variables_
 
